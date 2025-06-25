@@ -1,0 +1,63 @@
+python create_tsv.py --video_dir /root/autodl-tmp/av_hubert/avhubert/videos --output /root/autodl-tmp/av_hubert/avhubert/test_data/test.tsv
+
+python create_tsv.py --video_dir /root/autodl-tmp/av_hubert/avhubert/videos --output /root/autodl-tmp/av_hubert/avhubert/test_data/test.tsv --min_duration 0.5 --max_duration 20.0
+
+python -B infer_s2s.py --config-dir ./conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/av_hubert/avhubert/base_lrs3_433h.pt common_eval.results_path=/root/autodl-tmp/av_hubert/avhubert/results override.modalities=['video'] +override.data=/root/autodl-tmp/av_hubert/avhubert/test_data +override.label_dir=/root/autodl-tmp/av_hubert/avhubert/test_data common.user_dir=/root/autodl-tmp/av_hubert/avhubert
+
+/root/autodl-tmp/av_hubert/avhubert/self_large_vox_433h.pt
+python -B infer_s2s.py --config-dir ./conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/av_hubert/avhubert/self_large_vox_433h.pt common_eval.results_path=/root/autodl-tmp/av_hubert/avhubert/results override.modalities=['video'] +override.data=/root/autodl-tmp/av_hubert/avhubert/test_data +override.label_dir=/root/autodl-tmp/av_hubert/avhubert/test_data common.user_dir=/root/autodl-tmp/av_hubert/avhubert
+
+/root/autodl-tmp/av_hubert/avhubert/large_noise_pt_noise_ft_433h.pt
+python -B infer_s2s.py --config-dir ./conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/av_hubert/avhubert/large_noise_pt_noise_ft_433h.pt common_eval.results_path=/root/autodl-tmp/av_hubert/avhubert/results override.modalities=['video'] +override.data=/root/autodl-tmp/av_hubert/avhubert/test_data +override.label_dir=/root/autodl-tmp/av_hubert/avhubert/test_data common.user_dir=/root/autodl-tmp/av_hubert/avhubert
+
+/root/autodl-tmp/models/large_noise_pt_noise_ft_433h.pt
+python -B ./av_hubert/avhubert/infer_s2s.py --config-dir ./av_hubert/avhubert/conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/models/self_large_vox_433h.pt common_eval.results_path=/root/Project/av_hubert/avhubert/results override.modalities=['video'] +override.data=/root/Project/av_hubert/avhubert/test_data +override.label_dir=/root/Project/av_hubert/avhubert/test_data common.user_dir=/root/Project/av_hubert/avhubert
+
+python /root/Project/av_hubert/avhubert/create_tsv.py --video_dir /root/Project/av_hubert/avhubert/videos --output /root/Project/av_hubert/avhubert/test_data/test.tsv
+
+python -B ./av_hubert/avhubert/infer_s2s.py --config-dir ./av_hubert/avhubert/conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/models/large_noise_pt_noise_ft_433h.pt common_eval.results_path=/root/Project/av_hubert/avhubert/results override.modalities=['audio'] +override.data=/root/Project/av_hubert/avhubert/test_data +override.label_dir=/root/Project/av_hubert/avhubert/test_data common.user_dir=/root/Project/av_hubert/avhubert
+
+
+python -B ./av_hubert/avhubert/infer_s2s_getText.py --config-dir ./av_hubert/avhubert/conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/models/large_noise_pt_noise_ft_433h.pt common_eval.results_path=/root/Project/av_hubert/avhubert/results override.modalities=['audio'] +override.data=/root/Project/av_hubert/avhubert/test_data +override.label_dir=/root/Project/av_hubert/avhubert/test_data common.user_dir=/root/Project/av_hubert/avhubert
+
+python -B ./av_hubert/avhubert/infer_s2s_getText.py 
+--config-dir ./av_hubert/avhubert/conf/ 
+--config-name s2s_decode.yaml 
+dataset.gen_subset=test 
+common_eval.path=/root/autodl-tmp/models/large_noise_pt_noise_ft_433h.pt 
+common_eval.results_path=/root/Project/av_hubert/avhubert/results 
+override.modalities=['audio'] 
++override.data=/root/Project/av_hubert/avhubert/test_data 
++override.label_dir=/root/Project/av_hubert/avhubert/test_data 
+common.user_dir=/root/Project/av_hubert/avhubert
+
+
+python ./av_hubert/avhubert/create_tsv.py --video_dir /root/Project/av_hubert/avhubert/videos --output /root/Project/av_hubert/avhubert/test_data/test.tsv --min_duration 0.5 --max_duration 20.0
+    "you got a little surprise for you at christmas something very different from pompei called annie a musical and i play a character called nash very light"
+
+python /root/Project/av_hubert/avhubert/createTSV.py --video_dir /root/Project/av_hubert/avhubert/videos/ --audio_dir /root/Project/av_hubert/avhubert/videos/ --output_tsv /root/Project/av_hubert/avhubert/test_data/test.tsv --output_wrd /root/Project/av_hubert/avhubert/test_data/test.wrd
+
+python /root/Project/av_hubert/avhubert/createTSV.py --video_dir /root/Project/av_hubert/avhubert/videos/ --audio_dir /root/Project/av_hubert/avhubert/videos/ --output_tsv /root/Project/av_hubert/avhubert/test_data/test.tsv --output_wrd /root/Project/av_hubert/avhubert/test_data/test.wrd
+
+
+python -B ./av_hubert/avhubert/infer_s2s_getText.py --config-dir ./av_hubert/avhubert/conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/models/large_noise_pt_noise_ft_433h.pt common_eval.results_path=/root/Project/av_hubert/avhubert/results override.modalities=['video'] +override.data=/root/Project/av_hubert/avhubert/test_data +override.label_dir=/root/Project/av_hubert/avhubert/test_data common.user_dir=/root/Project/av_hubert/avhubert
+    "at the fall and then i took a little surprise for you christmas something very different from bombay called anney a musical i play a character whosets very unlike"
+large_noise_pt_noise_ft_433h.pt
+video
+
+python -B ./av_hubert/avhubert/infer_s2s_getText.py --config-dir ./av_hubert/avhubert/conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/models/self_large_vox_433h.pt common_eval.results_path=/root/Project/av_hubert/avhubert/results override.modalities=['video'] +override.data=/root/Project/av_hubert/avhubert/test_data +override.label_dir=/root/Project/av_hubert/avhubert/test_data common.user_dir=/root/Project/av_hubert/avhubert
+    "there in the fall and then i've got a little surprise for you at christmas something very different from pompeii called annie a musical and i play a character called nash very light"
+self_large_vox_433h.pt
+video
+
+python -B ./av_hubert/avhubert/infer_s2s_getText.py --config-dir ./av_hubert/avhubert/conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/models/self_large_vox_433h.pt common_eval.results_path=/root/Project/av_hubert/avhubert/results override.modalities=['video'] +override.data=/root/Project/av_hubert/avhubert/test_data +override.label_dir=/root/Project/av_hubert/avhubert/test_data common.user_dir=/root/Project/av_hubert/avhubert
+    "there in the fall and then i've got a little surprise for you at christmas something very different from pompeii called annie a musical and i play a character called nash very light"
+self_large_vox_433h.pt
+audio
+
+python -B ./av_hubert/avhubert/infer_s2s.py --config-dir ./av_hubert/avhubert/conf/ --config-name s2s_decode.yaml dataset.gen_subset=test common_eval.path=/root/autodl-tmp/models/self_large_vox_433h.pt common_eval.results_path=/root/Project/av_hubert/avhubert/results override.modalities=['video'] +override.data=/root/Project/av_hubert/avhubert/test_data +override.label_dir=/root/Project/av_hubert/avhubert/test_data common.user_dir=/root/Project/av_hubert/avhubert
+
+python /root/Project/av_hubert/avhubert/createTSV.py --video_dir /root/Project/av_hubert/avhubert/videos/ --audio_dir /root/Project/av_hubert/avhubert/videos/ --output_tsv /root/Project/av_hubert/avhubert/test_data/test.tsv --output_wrd /root/Project/av_hubert/avhubert/test_data/test.wrd
+
+
+python3 evaluate88.py --video_path av_hubert/avhubert/videos/ayn.mp4 --audio_path av_hubert/avhubert/videos/ayn.wav
