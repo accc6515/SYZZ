@@ -152,7 +152,7 @@ python preprocessing/align_mouth.py --video_root $video_root --file_list $file_l
 ### 3. 进行评估
 
 ```
-python evaluation/evaluate.py --video_root $video_root --file_list $file_list --mouth_dir $cropped_mouth_dir
+python evaluate.py --video_root $video_root --file_list $file_list --mouth_dir $cropped_mouth_dir
 ```
 
 不同伪造数据集的AUC分数如下所示：
