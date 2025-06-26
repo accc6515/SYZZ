@@ -1,4 +1,4 @@
-# 项目环境搭建指南
+项目环境搭建指南
 
 ## 一、准备工作
 
@@ -90,11 +90,23 @@ conda deactivate
 
 ------
 
-## 四、下载前端
+## 四、下载数据集
+
+按照以下链接下载数据集：
+
+* [FakeAVCeleb](https://github.com/DASH-Lab/FakeAVCeleb)
+
+* [LAV-DF](https://github.com/ControlNet/LAV-DF)
+
+---
+
+## 五、下载前端
 
 下载[前端压缩包](https://github.com/accc6515/SYZZ/releases/download/%E5%89%8D%E7%AB%AF%E5%8E%8B%E7%BC%A9%E5%8C%85/deepfake.zip)并解压
 
-## 五、运行方式
+---
+
+## 六、运行方式
 
 ### 1. 启动前端
 
@@ -114,4 +126,45 @@ python webBack/app.py
 > ⚠️ **注意**：首次运行“视频解码”模块时会自动安装 OpenAI Whisper 模型，请耐心等待。
 
 ------
+
+## 七、模型评估
+
+依次执行以下命令来评估模型：
+
+### 1. 检测人脸并提取 68 个面部特征点
+
+```
+python preprocessing/face-alignment/landmark_extract.py --video_root $video_root --file_list $file_list --out_dir $out_dir
+```
+
+- $video_root:  视频的根目录
+- $file_list:  包含视频名称的 txt 文件，我们在目录中提供了文件列表 `data/datasets/`
+- $out_dir: 保存 landmarks 的目录
+
+### 2. 从每个视频中裁剪嘴部区域
+
+```
+python preprocessing/align_mouth.py --video_root $video_root --file_list $file_list --landmarks_dir $landmarks_dir --out_dir $out_dir
+```
+
+- $out_dir: 用于保存裁剪后的嘴部视频的目录
+
+### 3. 进行评估
+
+```
+python evaluation/evaluate.py --video_root $video_root --file_list $file_list --mouth_dir $cropped_mouth_dir
+```
+
+不同伪造数据集的AUC分数如下所示：
+
+<table style="width:30%">
+  <tr>
+    <td style="width:50%"><strong>FakeAVCeleb<strong></td>
+    <td style="width:50%"><strong>LAV-DF<strong></td>
+  </tr>
+  <tr>
+    <td>98.87%</td>
+    <td>83.75%</td>
+  </tr>
+</table>
 
