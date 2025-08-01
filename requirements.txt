@@ -14,3 +14,4 @@ flask_cors
 openai-whisper
 flask_sqlalchemy
 librosa
+numpy==1.23.3
