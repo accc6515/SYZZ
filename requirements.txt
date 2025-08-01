@@ -7,10 +7,10 @@ scikit-image
 scikit-video==1.1.11
 numba
 soundfile
-sklearn
+scikit-learn
 seaborn
 flask
 flask_cors
 openai-whisper
-flask_sqlachemy
+flask_sqlalchemy
 librosa
